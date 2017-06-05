@@ -1,4 +1,4 @@
-#Simple Webpack boilerplate with react
+# Simple Webpack boilerplate with react
 
 ## Use
 * Install dependencies: 
