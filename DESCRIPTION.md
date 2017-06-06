@@ -18,12 +18,23 @@ related loader and dependencies:
 * eslint-plugin-react
 
 ### Style loader
-* css-loader
-* style-loader
-* sass-loader
-* postcss-loader and autoprefixer
-* extract-text-webpack-plugin
+* *css-loader*
 
+    css-loader goes through possible `@import` and `url()` lookups within 
+the matched files and treats them as a regular ES6 import.
+* *style-loader*
+
+    style-loader injects the styling through a style element.
+* *sass-loader*
+
+    pre-processor for CSS
+* *postcss-loader and autoprefixer*
+
+    PostCSS allows you to perform transformations over 
+    CSS through JavaScript plugins. Just like babel for ES6.
+* *[extract-text-webpack-plugin](https://www.npmjs.com/package/extract-text-webpack-plugin)*
+    
+    It can aggregate multiple CSS files into one.
 ### Webpack Specific
 * webpack-merge `npm install webpack-merge`
 * clean-webpack-plugin

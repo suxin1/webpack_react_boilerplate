@@ -7,6 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 
 const javaScript = require('./config/parts/javascript');
+const style = require('./config/parts/style');
 const devServer = require('./config/parts/devserver');
 
 const PATHS = {
@@ -39,6 +40,17 @@ const commonConfig = merge([
  * =======================================================*/
 const productionConfig  = merge([
     javaScript.loadJavaScript({include: PATHS.src }),
+    style.extractCSS({
+        use: [
+            {
+                loader: 'css-loader',
+                options: {
+                    url: false,
+                }
+            },
+            style.autoprefix(),
+        ]
+    }),
 ]);
 
 
@@ -47,6 +59,7 @@ const productionConfig  = merge([
  * =======================================================*/
 const developmentConfig = merge([
     devServer.devServer({host: '0.0.0.0', port: 8000}),
+    style.loadSCSS(),
 ]);
 
 module.exports = (env) => {
