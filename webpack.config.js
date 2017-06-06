@@ -59,7 +59,7 @@ const productionConfig  = merge([
  * =======================================================*/
 const developmentConfig = merge([
     devServer.devServer({host: '0.0.0.0', port: 8000}),
-    style.loadSCSS(),
+    style.loadCSS(),
 ]);
 
 module.exports = (env) => {
