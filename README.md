@@ -1,16 +1,16 @@
 # Simple Webpack boilerplate with react
 
-## Use
-* Install dependencies: 
+## Usage
+1. Install dependencies: 
 
 
     npm install
-* Start development server:
+2. Start development server:
 
 
     npm run start
 
-* Build project:
+3. Build project:
 
 
     npm run build
