@@ -41,25 +41,28 @@ exports.loadJavaScript = ({include, exclude}) => ({
 
 exports.loadJSX = ({include}) => ({
    module: {
-       loaders: [
+       rules: [
            {
                test: /\.(js|jsx)$/,
                // Enable caching for extra performance
-               loaders: ['babel?cacheDirectory'],
-               include
-           }
-       ]
-   }
+               include,
+               loader: "babel-loader",
+               options: {
+                   cacheDirectory: true,
+               },
+           },
+       ],
+   },
 });
 
 exports.lintJSX =({include}) => ({
     module: {
-        preLoaders: [
+        rules: [
             {
                 test: /\.(js|jsx)$/,
-                loaders: ['eslint'],
+                loaders: ['eslint-loader'],
                 include
-            }
-        ]
+            },
+        ],
     }
 });

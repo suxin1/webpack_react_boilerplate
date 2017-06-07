@@ -2,6 +2,8 @@
  * Webpack configuration
  ************************************************/
 
+const TARGET = process.env.npm_lifecycle_event;
+
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
@@ -24,14 +26,28 @@ const commonConfig = merge([
         output: {
             path: PATHS.build,
             filename: '[name].js',
+            // TODO: Set publicPath to match your GitHub project name
+            // E.g., '/kanban-demo/'. Webpack will alter asset paths
+            // based on this. You can even use an absolute path here
+            // or even point to a CDN.
+            // publicPath: '/reactDemo/'
+        },
+        resolve: {
+            extensions: ['.js', '.jsx'],
         },
         plugins: [
             new HtmlWebpackPlugin({
-                title: 'Baidu Lession',
+                template: require('html-webpack-template'),
+                title: 'Webpack with React',
+                // Set id for a div that will be used to mount app.
+                appMountId: 'app',
+                inject: false,
             }),
         ],
     },
     // javaScript.lintJavascript({include: PATHS.src}),
+    javaScript.loadJSX(PATHS.src),
+    javaScript.lintJSX(PATHS.src),
 ]);
 
 
@@ -61,6 +77,7 @@ const developmentConfig = merge([
     devServer.devServer({host: '0.0.0.0', port: 8000}),
     style.loadCSS(),
 ]);
+
 
 module.exports = (env) => {
     console.log('============================>>>>>')
