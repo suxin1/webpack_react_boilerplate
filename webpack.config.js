@@ -4,6 +4,7 @@
 
 const TARGET = process.env.npm_lifecycle_event;
 
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
@@ -67,6 +68,19 @@ const productionConfig  = merge([
             style.autoprefix(),
         ]
     }),
+    {
+        plugins: [
+            // Minimize build
+            new webpack.optimize.UglifyJsPlugin({
+                minimize:true
+            }),
+            new webpack.DefinePlugin({
+                'process.env': {
+                    'NODE_ENV': JSON.stringify('production'),
+                },
+            }),
+        ],
+    }
 ]);
 
 
@@ -74,7 +88,7 @@ const productionConfig  = merge([
  * Development Configuration
  * =======================================================*/
 const developmentConfig = merge([
-    devServer.devServer({host: '0.0.0.0', port: 8000}),
+    devServer.devServer({host: '0.0.0.0', port: 8001}),
     style.loadCSS(),
 ]);
 

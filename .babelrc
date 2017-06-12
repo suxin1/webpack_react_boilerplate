@@ -9,5 +9,16 @@
         "react-hmre"
       ]
     }
-  }
+  },
+  "plugins": [
+    ["transform-class-properties", {"spec": true}],
+    "array-includes",
+    "syntax-class-properties",
+    "syntax-decorators",
+    "syntax-export-extensions",
+    "syntax-object-rest-spread",
+    "transform-decorators-legacy",
+    "transform-object-assign",
+    "transform-object-rest-spread"
+  ]
 }
