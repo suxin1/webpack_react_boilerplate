@@ -6,13 +6,13 @@
   "parser": "babel-eslint",
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "es6": true
   },
   "plugins": [
     "react"
   ],
   "rules": {
-    "quotes": [2, "single"],
     "no-console": 0,
     "no-unused-vars": 0,
     "react/display-name": 0,

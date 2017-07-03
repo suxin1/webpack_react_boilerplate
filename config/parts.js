@@ -1,7 +1,7 @@
 /**
  * Created by suxin on 6/5/17.
  */
-const HtmlWebpackPlugin = require('')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 exports.indexTemplate = function(options) {
        return {
@@ -14,4 +14,8 @@ exports.indexTemplate = function(options) {
                })
            ]
        };
-}
+};
+
+exports.generateSourceMap = ({type}) => ({
+   devtool: type,
+});

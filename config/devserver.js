@@ -11,5 +11,7 @@ exports.devServer = ({ host, port } = {}) => ({
             errors: true,
             warnings: true,
         },
+        // TODO set to the right host name or ip to make the web accessible by the LAN
+        public: "192.168.0.104:8000"
     },
 });

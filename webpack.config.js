@@ -9,9 +9,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 
-const javaScript = require('./config/parts/javascript');
-const style = require('./config/parts/style');
-const devServer = require('./config/parts/devserver');
+const javaScript = require('./config/javascript');
+const style = require('./config/style');
+const devServer = require('./config/devserver');
+const parts = require('./config/parts');
 
 const PATHS = {
     src: path.join(__dirname, 'src'),
@@ -90,6 +91,7 @@ const productionConfig  = merge([
 const developmentConfig = merge([
     devServer.devServer({host: '0.0.0.0', port: 8001}),
     style.loadCSS(),
+    parts.generateSourceMap({type: "inline-source-map"})
 ]);
 
 
